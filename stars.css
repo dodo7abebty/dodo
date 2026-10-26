@@ -1,0 +1,24 @@
+.sky-sec{opacity:0;transform:translateY(28px);transition:opacity 1s,transform 1s; max-width:760px; margin:0 auto; padding:5rem 1.25rem;}
+.sky-sec.in{opacity:1;transform:none}
+.sky{position:relative;width:min(92vw,420px);aspect-ratio:1;margin:0 auto}
+.sky-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sky-lines path{fill:rgba(var(--particle),.08);stroke:var(--gold);stroke-width:.5;stroke-linejoin:round;
+  stroke-dasharray:400;stroke-dashoffset:400;opacity:0;transition:opacity .6s}
+.sky.done .sky-lines path{opacity:1;animation:skyDraw 3s ease forwards}
+@keyframes skyDraw{to{stroke-dashoffset:0}}
+.star{position:absolute;width:40px;height:40px;margin:-20px;border:0;border-radius:50%;cursor:pointer;
+  font-size:1.5rem;line-height:1;color:var(--muted);background:var(--glass);border:1px solid var(--edge);
+  backdrop-filter:blur(8px);transition:.4s;animation:twinkle 3s ease-in-out infinite}
+.star:nth-child(3n){animation-delay:.7s}.star:nth-child(3n+1){animation-delay:1.4s}
+@keyframes twinkle{50%{transform:scale(1.12);opacity:.75}}
+.star:hover{transform:scale(1.2)}
+.star.lit{color:var(--gold);border-color:var(--gold);animation:none;
+  box-shadow:0 0 18px var(--gold),0 0 40px rgba(var(--particle),.45)}
+.star.cur{transform:scale(1.25)}
+.sky-msg{min-height:6.5rem;margin:1.8rem auto 0;max-width:520px;padding:1.2rem 1.5rem;text-align:center;
+  font-size:1.25rem;color:var(--ink);background:var(--glass);border:1px solid var(--edge);
+  border-radius:20px;backdrop-filter:blur(14px);box-shadow:var(--glow);transition:opacity .3s}
+.sky-count{text-align:center;color:var(--muted);margin-top:.8rem;font-size:.95rem}
+.sky-heart{position:absolute;pointer-events:none;color:var(--rose);animation:skyUp 2.6s ease-out forwards}
+@keyframes skyUp{to{transform:translate(var(--dx),-240px) rotate(var(--r));opacity:0}}
+@media(prefers-reduced-motion:reduce){.star,.sky-lines path,.sky-heart{animation:none!important}.sky-lines path{stroke-dashoffset:0}}
